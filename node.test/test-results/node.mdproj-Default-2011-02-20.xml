@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Tests>
+    <TestRecord Name="nodecs">
+      <Results>
+        <UnitTestResult>
+          <TestDate>2011-02-20T08:56:04</TestDate>
+          <Status>Ignored</Status>
+          <TotalFailures>0</TotalFailures>
+          <TotalSuccess>0</TotalSuccess>
+          <TotalIgnored>0</TotalIgnored>
+          <Time />
+          <Message>Has no TestFixtures</Message>
+        </UnitTestResult>
+      </Results>
+    </TestRecord>
+  </Tests>
+</TestRecord>

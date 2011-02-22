@@ -30,11 +30,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.core.interfaces, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\nunit.core.interfaces.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Collections\Heap.cs" />
+    <Compile Include="Exceptions\Preconditions.cs" />
+    <Compile Include="EventLoop\ITimerManager.cs" />
+    <Compile Include="EventLoop\TimerManager.cs" />
+    <Compile Include="EventLoop\ILoop.cs" />
+    <Compile Include="EventLoop\Loop.cs" />
+    <Compile Include="EventLoop\ISocketHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -44,5 +53,7 @@
   </ProjectExtensions>
   <ItemGroup>
     <Folder Include="Collections\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="EventLoop\" />
   </ItemGroup>
 </Project>
