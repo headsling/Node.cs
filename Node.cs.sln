@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manos", "manos\src\Manos\Manos.csproj", "{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "node", "node\node.csproj", "{00B8A60F-71A8-41F9-8042-CBAFB832CC1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "node.common", "node.common\node.common.csproj", "{4868781B-94F1-4539-8A8C-6043CEDFA1E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timer", "examples\timer\timer.csproj", "{BE608A51-BFBE-4800-80AA-77B4A2271683}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00B8A60F-71A8-41F9-8042-CBAFB832CC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B8A60F-71A8-41F9-8042-CBAFB832CC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B8A60F-71A8-41F9-8042-CBAFB832CC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B8A60F-71A8-41F9-8042-CBAFB832CC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4868781B-94F1-4539-8A8C-6043CEDFA1E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4868781B-94F1-4539-8A8C-6043CEDFA1E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4868781B-94F1-4539-8A8C-6043CEDFA1E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4868781B-94F1-4539-8A8C-6043CEDFA1E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = node\node.csproj
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $2
+		$2.FileWidth = 120
+		$2.RemoveTrailingWhitespace = True
+		$2.inheritsSet = VisualStudio
+		$2.inheritsScope = text/plain
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.IndentSwitchBody = True
+		$3.BeforeMethodCallParentheses = False
+		$3.BeforeMethodDeclarationParentheses = False
+		$3.BeforeConstructorDeclarationParentheses = False
+		$3.BeforeDelegateDeclarationParentheses = False
+		$3.NewParentheses = False
+		$3.IfParentheses = False
+		$3.WhileParentheses = False
+		$3.ForParentheses = False
+		$3.ForeachParentheses = False
+		$3.CatchParentheses = False
+		$3.SwitchParentheses = False
+		$3.LockParentheses = False
+		$3.UsingParentheses = False
+		$3.WithinParentheses = True
+		$3.WithinMethodCallParentheses = True
+		$3.WithinMethodDeclarationParentheses = True
+		$3.WithinIfParentheses = True
+		$3.WithinWhileParentheses = True
+		$3.WithinForParentheses = True
+		$3.WithinForEachParentheses = True
+		$3.WithinCatchParentheses = True
+		$3.WithinSwitchParentheses = True
+		$3.WithinLockParentheses = True
+		$3.WithinUsingParentheses = True
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+		outputpath = bin
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,507 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>/home/robin/dev/Node.cs/bin/Manos</name>
+    </assembly>
+    <members>
+        <member name="T:Manos.DeleteAttribute">
+            <summary>
+            Indicates that the decorated method should respond to any specified routes when the DELETE verb is used for the request.
+            </summary>
+        </member>
+        <member name="T:Manos.GetAttribute">
+            <summary>
+            Indicates that the decorated method should respond to any specified routes when the GET verb is used for the request.
+            </summary>
+        </member>
+        <member name="M:Manos.GetAttribute.#ctor">
+            <summary>
+            Specifies that the decoraetd method should only be invoked when the http GET verb is used.
+            </summary>
+        </member>
+        <member name="M:Manos.GetAttribute.#ctor(System.String[])">
+            <summary>
+            Specifies that the decorated method should be invoked whenever a GET request matches any of the patterns declared)
+            </summary>
+            <param name="patterns">
+            A <see cref="T:System.String[]" /></param>
+        </member>
+        <member name="T:Manos.HeadAttribute">
+            <summary>
+            Indicates that the decorated method should respond to any specified routes when the HEAD verb is used for the request.
+            </summary>
+        </member>
+        <member name="M:Manos.HeadAttribute.#ctor">
+            <summary>
+            Specifies that the decoraetd method should only be invoked when the http HEAD verb is used.
+            </summary>
+        </member>
+        <member name="M:Manos.HeadAttribute.#ctor(System.String[])">
+            <summary>
+            Specifies that the decorated method should be invoked whenever a HEAD request matches any of the patterns declared)
+            </summary>
+            <param name="patterns">
+            A <see cref="T:System.String[]" /></param>
+        </member>
+        <member name="T:Manos.IgnoreAttribute">
+            <summary>
+            Indicates that the decorated method should not be used to respond to requests (even if a route would otherwise select it.)
+            </summary>
+        </member>
+        <member name="T:Manos.ManosApp">
+            <summary>
+            The entry point for your manos app. Derive from this class one time in your manos app and it will get instantiated when the runtime executes.
+            </summary>
+            <remarks>
+            This is similar in concept to the HttpApplication in the ASP.Net stack.
+            </remarks>
+        </member>
+        <member name="T:Manos.ManosContext">
+            <summary>
+            Relevent information related to the request initiated by an HTTP client.
+            </summary>
+            <remarks>
+            Similar in concept to HttpContext under the ASP.Net stack.
+            </remarks>
+        </member>
+        <member name="P:Manos.ManosContext.Server">
+            <summary>
+            Information related to the Environment under which this app is running.
+            </summary>
+            <remarks>
+            This is a cenvenience method that calls Transaction.Server.
+            </remarks>
+        </member>
+        <member name="P:Manos.ManosContext.Transaction">
+            <summary>
+            A single request/response interation between the client and this server.
+            </summary>
+        </member>
+        <member name="P:Manos.ManosContext.Request">
+            <summary>
+            Information related to the request initiated by the client.
+            </summary>
+            <remarks>
+            This is a convenience method that calls Transaction.Request.
+            </remarks>
+        </member>
+        <member name="P:Manos.ManosContext.Response">
+            <summary>
+            Information related to how this server will respond to the client's request.
+            </summary>
+            <remarks>
+            This is a convenience method that calls Transaction.Response.
+            </remarks>
+        </member>
+        <member name="T:Manos.ManosModule">
+            <summary>
+            A pre-packaged set of routes/actions that can be registered in the constructor of a ManoApp-derived class.
+            </summary>
+        </member>
+        <member name="T:Manos.OptionsAttribute">
+            <summary>
+            Indicates that the decorated method should respond to any specified routes when the OPTIONS verb is used for the request.
+            </summary>
+        </member>
+        <member name="T:Manos.PostAttribute">
+            <summary>
+            Indicates that the decorated method should respond to any specified routes when the POST verb is used for the request.
+            </summary>
+        </member>
+        <member name="M:Manos.PostAttribute.#ctor">
+            <summary>
+            Specifies that the decoraetd method should only be invoked when the http POST verb is used.
+            </summary>
+            <remarks>
+            Assumes that the method will be implicitly matched.
+            </remarks>
+        </member>
+        <member name="M:Manos.PostAttribute.#ctor(System.String[])">
+            <summary>
+            Specifies that the decorated method should be invoked whenever a POST request matches any of the patterns declared)
+            </summary>
+            <param name="patterns">
+            A <see cref="T:System.String[]" /></param>
+        </member>
+        <member name="T:Manos.PutAttribute">
+            <summary>
+            Indicates that the decorated method should respond to any specified routes when the PUT verb is used for the request.
+            </summary>
+        </member>
+        <member name="M:Manos.PutAttribute.#ctor(System.String[])">
+            <summary>
+            </summary>
+            <param name="patterns">
+            A <see cref="T:System.String[]" /></param>
+        </member>
+        <member name="T:Manos.TraceAttribute">
+            <summary>
+            Indicates that the decorated method should respond to any specified routes when the TRACE verb is used for the request.
+            </summary>
+        </member>
+        <member name="M:Manos.TraceAttribute.#ctor">
+            <summary>
+            Specifies that the decoraetd method should only be invoked when the http TRACE verb is used.
+            </summary>
+        </member>
+        <member name="M:Manos.TraceAttribute.#ctor(System.String[])">
+            <summary>
+            Specifies that the decorated method should be invoked whenever a TRACE request matches any of the patterns declared)
+            </summary>
+            <param name="patterns">
+            A <see cref="T:System.String[]" /></param>
+        </member>
+        <member name="M:Manos.Http.HttpParser.Execute(Manos.Http.ParserSettings,Manos.Collections.ByteBuffer)">
+             Execute the parser with the currently available data contained in
+            		 * the buffer. The buffers position() and limit() need to be set
+            		 * correctly (obviously) and a will be updated approriately when the
+            		 * method returns to reflect the consumed data.</member>
+        <member name="T:Manos.Http.HttpEntity">
+            <summary>
+            A base class for HttpRequest and HttpResponse.  Generally user code should not care at all about
+            this class, it just exists to eliminate some code duplication between the two derived types.
+            </summary>
+        </member>
+        <member name="M:Manos.Http.HttpHeaders.GetAttribute(System.String,System.String)">
+            from mono's System.Web/HttpRequest.cs</member>
+        <member name="M:Manos.Http.HttpHeaders.EncodeHeaderString(System.String)">
+            from mono's System.Web.Util/HttpEncoder.cs</member>
+        <member name="M:Manos.IO.IOStream.AdjustSegments(System.Int32,System.Collections.Generic.IList{Manos.Collections.ByteBuffer})">
+            This could use some tuning, but the basic idea is that we need to remove
+            all of the data that has been sent already.</member>
+        <member name="T:Manos.IManosContext">
+            <summary>
+            Relevent information related to the request initiated by an HTTP client.
+            </summary>
+            <remarks>
+            Similar in concept to HttpContext under the ASP.Net stack.
+            </remarks>
+        </member>
+        <member name="P:Manos.IManosContext.Request">
+            <summary>
+            Information related to the request initiated by the client.
+            </summary>
+        </member>
+        <member name="P:Manos.IManosContext.Response">
+            <summary>
+            Information related to how this server will respond to the client's request.
+            </summary>
+        </member>
+        <member name="M:Manos.Logging.IManosLogger.Critical(System.String,System.Object[])">
+            <summary>
+            An error that can not be recovered from has occurred.  The application is
+            now in a volatile state or has crashed.
+            </summary>
+        </member>
+        <member name="M:Manos.Logging.IManosLogger.Error(System.String,System.Object[])">
+            <summary>
+            An application error has occurred.  The application should be able to recover
+            from this type of error, but there might be an interuption in service.  Such
+            as a request not being processed.
+            </summary>
+        </member>
+        <member name="M:Manos.Logging.IManosLogger.Info(System.String,System.Object[])">
+            <summary>
+            Application information, that might be useful to administrators when setting
+            up or tuning an application.
+            </summary>
+        </member>
+        <member name="M:Manos.Logging.IManosLogger.Debug(System.String,System.Object[])">
+            <summary>
+            Debug information useful to developers.  Should only be enabled when an
+            error is being diagnosed.
+            </summary>
+        </member>
+        <member name="F:Manos.Logging.LogLevel.None">
+            <summary>
+            Do not log any messages.
+            </summary>
+        </member>
+        <member name="F:Manos.Logging.LogLevel.Critical">
+            <summary>
+            Only log critical errors. These are errors that can not be recovered from.  Leaving
+            the application in a volatile unusable state or crashed.
+            </summary>
+        </member>
+        <member name="F:Manos.Logging.LogLevel.Error">
+            <summary>
+            Log Critical and normal errors. Normal errors should be able to recoverable
+            but there might be an interuption in service.  Such as a request not being processed.
+            </summary>
+        </member>
+        <member name="F:Manos.Logging.LogLevel.Info">
+            <summary>
+            Log Application information, normal and critical errors.
+            Application information is information that might be useful to administrators when
+            settingup or tuning an application.
+            </summary>
+        </member>
+        <member name="F:Manos.Logging.LogLevel.Debug">
+            <summary>
+            Log all messages including Debug information useful to developers.  This Should only be
+            enabled when an error is being diagnosed.
+            </summary>
+        </member>
+        <member name="T:Manos.HttpMethods">
+            <summary>
+            Static lookups for each of the http verbs, and then an array with all of them.
+            </summary>
+            <remarks>
+            ATT: not sure what the purpose of these are, couldn't one just use enum with the "Flags" attribute?
+            Maybe this is a special performance thing?
+            </remarks>
+        </member>
+        <member name="T:Manos.Timeout">
+            <summary>
+            Provides a mechanism for things to happen periodically within a ManosApp.
+            Timeouts are gauranteed to happen at some moment on or after the TimeSpan specified has ellapsed.
+            Timeouts will never run before the specified TimeSpan has ellapsed.
+            Use the method <see cref="T:Manos.IO.IOLoop" /> "AddTimeout" method to register each Timeout.
+            </summary>
+        </member>
+        <member name="M:Manos.Timeout.Run(Manos.ManosApp)">
+            <summary>
+            Causes the action specified in the constructor to be executed. Infrastructure.
+            </summary>
+            <param name="app">
+            A <see cref="T:Manos.ManosApp" /></param>
+        </member>
+        <member name="M:Manos.Timeout.ShouldContinueToRepeat">
+            <summary>
+            Inidicates that the IOLoop should retain this timeout, because it will be run again at some point in the future. Infrastructure.
+            </summary>
+        </member>
+        <member name="T:Manos.AppHost">
+            <summary>
+            The app runner. This is where the magic happens.
+            </summary>
+        </member>
+        <member name="T:Manos.Routing.ManosAction">
+            <summary>
+            A delegate type that accepts an IManosContext and returns void.
+            </summary>
+            <remarks>
+            ATT: is this really necessary? Action&gt;IManosContext&lt; could be used in place of this,
+            and would require consumers of Manos to understand fewer classes.
+            </remarks>
+        </member>
+        <member name="T:Manos.IManosPipe">
+            <summary>
+            ManosPipe provides a mechanism to intercept calls before or after the standard Manos Routing has taking place.
+            (For example, Gzip compression module could compress content post process)
+            </summary>
+            <remarks>
+            This is similar in concept to the HttpModule in the ASP.Net stack.</remarks>
+        </member>
+        <!--FIXME: Invalid documentation markup was found for member M:Manos.IManosPipe.OnPreProcessRequest(Manos.ManosApp,Manos.Http.IHttpTransaction,System.Action)-->
+        <member name="M:Manos.IManosPipe.OnPreProcessTarget(Manos.IManosContext,System.Action{Manos.Routing.IManosTarget})">
+            <summary>
+            Called after the response object has been created but before any routing has been done
+            if you would like to override the default routing you can do it here, by changing the
+            IManosTarget returned in the complete Action.
+            </summary>
+        </member>
+        <member name="M:Manos.IManosPipe.OnPostProcessTarget(Manos.IManosContext,Manos.Routing.IManosTarget,System.Action)">
+            <summary>
+            The default routing information has been looked up, but the actual action execution
+            has not occurred yet.
+            </summary>
+        </member>
+        <member name="M:Manos.IManosPipe.OnPostProcessRequest(Manos.ManosApp,Manos.Http.IHttpTransaction,System.Action)">
+            <summary>
+            The action has been invoked and has had its End method called.  This is the final
+            step in the pipeline.
+            </summary>
+        </member>
+        <member name="M:Manos.IManosPipe.OnError(Manos.IManosContext,System.Action)">
+            <summary>
+            An error has been raised by Manos. (Currently unimplemented).
+            </summary>
+        </member>
+        <member name="T:Manos.ManosPipe">
+            <summary>
+            ManosPipe provides a mechanism to intercept calls before or after the standard Manos Routing has taking place.
+            (For example, Gzip compression module could compress content post process)
+            </summary>
+            <remarks>
+            This is similar in concept to the HttpModule in the ASP.Net stack.</remarks>
+        </member>
+        <member name="T:Manos.Pipeline">
+            <summary>
+            A pipeline coordinates an httprequest/response session.  Making sure all the ManosPipes are invoked
+            and invoking the actual request exectution.
+            </summary>
+            <remarks>
+            User code should typically not use this type.
+            </remarks>
+        </member>
+        <member name="T:Manos.Collections.DataDictionary">
+            <summary>
+            A Heirarcical dictionary. Data can live at the "root" level, or in child dictionaries.
+            DataDictionaries can store UnsafeStrings, lists of UnsafeStrings and dictionarys with
+            strings as their key and UnsafeStrings as their values.  To add a list to the DataDictionary
+            simply add an item with a [] at the end of the keyname.  To add a dictionary you
+            just add an item in this format keyname[key].
+            </summary>
+        </member>
+        <member name="P:Manos.Collections.DataDictionary.Item(System.String)">
+            <summary>
+            Get or set the string value at the specified key.
+            </summary>
+            <param name="key">
+            A <see cref="T:System.String" /></param>
+        </member>
+        <member name="P:Manos.Collections.DataDictionary.Count">
+            <summary>
+            The sum of child dictionaries count and the count
+            of the keys in this dictionary.
+            </summary>
+        </member>
+        <member name="P:Manos.Collections.DataDictionary.Children">
+            <summary>
+            The child dictionaries.
+            </summary>
+        </member>
+        <member name="M:Manos.Collections.DataDictionary.Get(System.String)">
+            <summary>
+            The "unsafe" string version of the value that is stored in this dictionary, or "null" if no value is stored for the specified key.
+            </summary>
+            <param name="key">
+            A <see cref="T:System.String" /></param>
+            <returns>
+            A <see cref="T:Manos.UnsafeString" /></returns>
+        </member>
+        <member name="M:Manos.Collections.DataDictionary.GetList(System.String)">
+            <summary>
+            A list of unsafe strings stored with the specified
+            key.  Lists are created when an item is added to
+            the dictionary with [] at the end of its name.
+            </summary>
+        </member>
+        <member name="M:Manos.Collections.DataDictionary.GetDict(System.String)">
+            <summary>
+            A dictionary of Unsafe strings.  Dictionaries are
+            created when an item is added to the
+            DataDictionary with a key in the format:
+            foo[key].
+            </summary>
+        </member>
+        <member name="M:Manos.Collections.DataDictionary.GetString(System.String)">
+            <summary>
+            Get a "safe" string from the dictionary, or, if the key doesn't exist in the dictionary, null.
+            </summary>
+            <param name="key">
+            </param>
+            <returns>
+            The "safe" version of the value that is stored in the dictionary.
+            </returns>
+        </member>
+        <member name="M:Manos.Collections.DataDictionary.Clear">
+            <summary>
+            Remove all elements from this dictionary, and remove all references to child dictionaries.
+            </summary>
+        </member>
+        <member name="M:Manos.Collections.DataDictionary.Set(System.String,System.String)">
+            <summary>
+            Assign a value into this dictionary with the specified key.
+            </summary>
+            <param name="key">
+            A <see cref="T:System.String" /></param>
+            <param name="value">
+            A <see cref="T:System.String" /></param>
+        </member>
+        <member name="M:Manos.Collections.DataDictionary.Set(System.String,Manos.UnsafeString)">
+            <summary>
+            Assign a value into this dictionary with the specified key.
+            </summary>
+            <param name="key">
+            A <see cref="T:System.String" /></param>
+            <param name="value">
+            A <see cref="T:Manos.UnsafeString" /></param>
+        </member>
+        <member name="T:Manos.RouteAttribute">
+            <summary>
+            Indicates that the decorated method should respond to any specified routes, regardless of Http Verb issued.
+            </summary>
+        </member>
+        <member name="M:Manos.RouteAttribute.#ctor">
+            <summary>
+            Specifies that the decoraetd method should respond to any request that it matches.
+            </summary>
+        </member>
+        <member name="M:Manos.RouteAttribute.#ctor(System.String[])">
+            <summary>
+            Specifies that the decorated method should be invoked whenever a request matches any of the patterns declared)
+            </summary>
+            <param name="patterns">
+            A <see cref="T:System.String[]" /></param>
+        </member>
+        <member name="T:Manos.UnsafeString">
+            <summary>
+            Since returning non-encoded content to the browser can introduce unwanted
+            Cross-Site Scripting attacks (and other bad things), Manos will encode the
+            output automatically, this class allows a developer to specify content that should be returned as is.
+            "With great power comes great responsibility."
+            </summary>
+            <remarks>
+            ATT: I think that the summary is right, Jackson, can you confirm?
+            </remarks>
+        </member>
+        <member name="P:Manos.UnsafeString.UnsafeValue">
+            <summary>
+            The original, non-escaped string.
+            </summary>
+        </member>
+        <member name="P:Manos.UnsafeString.SafeValue">
+            <summary>
+            The "safer" version of this string, has some common "unsafe" characters replaced with their HTML Entity counterparts.
+            </summary>
+        </member>
+        <member name="P:Manos.UnsafeString.HasUnsafefData">
+            <summary>
+            Indicates true if the original string value contained "unsafe" content.
+            </summary>
+        </member>
+        <member name="M:Manos.UnsafeString.ToString">
+            <summary>
+            Returns a "safe" version of this string.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /></returns>
+        </member>
+        <member name="M:Manos.UnsafeString.Escape(System.String)">
+            <summary>
+            Substitute common characters that could cause security vulnerabilities with their HTML Entity counterparts.
+            </summary>
+            <param name="input">
+            The string that has potentially unsafe values.
+            </param>
+            <returns>
+            The input with common "unsafe" characters replaced with their "safe" HTML Entity counterparts.
+            </returns>
+        </member>
+        <member name="M:Manos.UnsafeString.Escape(System.String,System.Boolean@)">
+            <summary>
+            Substitute common characters that could cause security vulnerabilities with their HTML Entity counterparts.
+            </summary>
+            <param name="input">
+            The string that has potentially unsafe values.
+            </param>
+            <param name="has_unsafe_data">
+            True if any substitutions take place, false otherwise.
+            </param>
+            <returns>
+            The input with common "unsafe" characters replaced with their "safe" HTML Entity counterparts.
+            </returns>
+        </member>
+        <member name="M:Manos.UnsafeString.op_Implicit(Manos.UnsafeString)~System.String">
+            <summary>
+            Implicitly constructs an unsafe string object from a <see cref="T:System.String" />.
+            </summary>
+            <param name="input">
+            A <see cref="T:Manos.UnsafeString" /></param>
+            <returns>
+            A <see cref="T:System.String" /></returns>
+        </member>
+    </members>
+</doc>

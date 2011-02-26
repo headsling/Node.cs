@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="node/Program.cs">
+    <Files>
+      <File FileName="node/Program.cs" Line="83" Column="85" />
+      <File FileName="node.common/INodeProgram.cs" Line="4" Column="2" />
+      <File FileName="manos/src/Manos/Manos/AppHost.cs" Line="73" Column="30" />
+      <File FileName="examples/timer/MyClass.cs" Line="17" Column="22" />
+      <File FileName="manos/src/Manos/Libev/TimerWatcher.cs" Line="86" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

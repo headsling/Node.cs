@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{259D5EAD-0DCB-44A5-8323-6AE16A16B101}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Manos.Tests</RootNamespace>
+    <AssemblyName>Manos.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\build\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Commandlineparameters>--profile=monocov </Commandlineparameters>
+    <NoWarn>1591</NoWarn>
+    <Externalconsole>true</Externalconsole>
+    <EnvironmentVariables>
+      <EnvironmentVariables>
+        <Variable name="DYLD_FALLBACK_LIBRARY_PATH" value="/usr/local/lib" />
+      </EnvironmentVariables>
+    </EnvironmentVariables>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\build\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework" />
+    <Reference Include="System">
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Manos\ManosModuleTest.cs" />
+    <Compile Include="Manos.Routing\RouteHandlerTest.cs" />
+    <Compile Include="Manos.Routing\RegexMatchOperationTest.cs" />
+    <Compile Include="Manos.Routing\MatchOperationFactoryTest.cs" />
+    <Compile Include="Manos.Routing\StringMatchOperationTest.cs" />
+    <Compile Include="Manos.Routing\NopMatchOperationTest.cs" />
+    <Compile Include="Manos.Http\HttpRequestTest.cs" />
+    <Compile Include="Manos.Http\HttpHeadersTest.cs" />
+    <Compile Include="Manos\InfiniteRepeatBehaviorTest.cs" />
+    <Compile Include="Manos\RepeatBehaviorTest.cs" />
+    <Compile Include="Manos\AppHostTest.cs" />
+    <Compile Include="Manos.Caching\ManosInProcCacheTest.cs" />
+    <Compile Include="Manos.Routing\ActionTargetTest.cs" />
+    <Compile Include="Manos.Routing\ParameterizedActionTest.cs" />
+    <Compile Include="Manos.Routing\SimpleMatchOperationTest.cs" />
+    <Compile Include="Nunit-Extensions\Nunit_Extension_Methods.cs" />
+    <Compile Include="Manos.Collections\DataDictionaryTest.cs" />
+    <Compile Include="Manos.Http\HttpCookieTest.cs" />
+    <Compile Include="Manos.Routing\HtmlFormDataTypeConverterTest.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Manos\Manos.csproj">
+      <Project>{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}</Project>
+      <Name>Manos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="Manos.Template\CodegenTest.cs" />
+    <None Include="Manos.Template\TemplateFactoryTest.cs" />
+  </ItemGroup>
+</Project>
