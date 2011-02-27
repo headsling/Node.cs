@@ -38,6 +38,7 @@ using System.Collections.Specialized;
 using Libev;
 using Manos.IO;
 using Manos.Collections;
+using System.Diagnostics;
 
 namespace Manos.Http {
 
@@ -446,7 +447,7 @@ namespace Manos.Http {
 		public void End (string str)
 		{
 			Write (str);
-			End ();
+            End ();
 		}
 
 		public void End (byte [] data)
@@ -473,7 +474,8 @@ namespace Manos.Http {
 		}
 
 		internal virtual void HandleEnd (Loop loop, AsyncWatcher watcher, EventTypes revents)
-		{
+        {
+            Console.WriteLine( "handlee" );
 			if (OnEnd != null)
 				OnEnd ();
 		}
