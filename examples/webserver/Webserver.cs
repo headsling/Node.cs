@@ -13,11 +13,10 @@ namespace webserver
             {
                 Console.WriteLine( "got connection {0}", t.Request.Path );
 
-                t.Response.Write( "<H1>Hello World!</H1>" );
-                t.Response.End();
+                t.Response.End("<H1>Hello World!</H1>");
 
 
-            }, IOLoop.Instance ).Listen( "localhost", 8080 );
+            }, IOLoop.Instance ).Listen( "127.0.0.1", 8080 );
 
 
             Console.WriteLine( "listening on 8080" );
