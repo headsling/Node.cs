@@ -266,6 +266,11 @@
             <param name="app">
             A <see cref="T:Manos.ManosApp" /></param>
         </member>
+        <member name="M:Manos.Timeout.Stop">
+            <summary>
+            Stop the current timeout from further execution.  Once a timeout is stopped it can not be restarted
+            </summary>
+        </member>
         <member name="M:Manos.Timeout.ShouldContinueToRepeat">
             <summary>
             Inidicates that the IOLoop should retain this timeout, because it will be run again at some point in the future. Infrastructure.

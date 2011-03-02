@@ -1,17 +1,48 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="examples/webserver/Webserver.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="manos/src/Manos/Manos/Timeout.cs">
     <Files>
-      <File FileName="node/Program.cs" Line="84" Column="1" />
-      <File FileName="node.common/INodeProgram.cs" Line="4" Column="2" />
-      <File FileName="manos/src/Manos/Manos/AppHost.cs" Line="73" Column="30" />
-      <File FileName="examples/timer/MyClass.cs" Line="17" Column="22" />
-      <File FileName="manos/src/Manos/Libev/TimerWatcher.cs" Line="86" Column="2" />
-      <File FileName="examples/webserver/Webserver.cs" Line="4" Column="41" />
+      <File FileName="examples/webserver/Webserver.cs" Line="30" Column="1" />
+      <File FileName="examples/timer/MyClass.cs" Line="12" Column="103" />
+      <File FileName="ConsoleTests/Main.cs" Line="21" Column="1" />
+      <File FileName="manos/src/Manos/Manos.IO/IOLoop.cs" Line="97" Column="15" />
+      <File FileName="node/Program.cs" Line="98" Column="1" />
+      <File FileName="manos/src/Manos/Manos/Timeout.cs" Line="73" Column="26" />
+      <File FileName="manos/src/Manos/Libev/TimerWatcher.cs" Line="81" Column="5" />
+      <File FileName="manos/src/Manos/Manos/IRepeatBehavior.cs" Line="30" Column="3" />
+      <File FileName="manos/src/Manos/Manos/RepeatBehavior.cs" Line="37" Column="3" />
+      <File FileName="manos/src/Manos/Manos/IterativeRepeatBehavior.cs" Line="57" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="ConsoleTests" expanded="True" />
+          <Node name="Manos" expanded="True">
+            <Node name="Manos" expanded="True">
+              <Node name="Timeout.cs" selected="True" />
+            </Node>
+            <Node name="Manos.IO" expanded="True" />
+          </Node>
+          <Node name="node" expanded="True" />
+          <Node name="timer" expanded="True" />
+          <Node name="webserver" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>t.ShouldContinueToRepeat()</Value>
+          <Value>repeat.ShouldContinueToRepeat ()</Value>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/home/robin/dev/Node.cs/examples/webserver/Webserver.cs" line="12" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

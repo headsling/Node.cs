@@ -4,6 +4,7 @@ using System.Reflection;
 using System.IO;
 using node.common;
 using Manos;
+using Libev;
 namespace node
 {
 	public class Program
@@ -71,9 +72,11 @@ namespace node
 
             int retCode = 0;
 
-            Manos.Timeout t = new Manos.Timeout( TimeSpan.FromMilliseconds( 1 ), RepeatBehavior.Single, null,
+            Manos.Timeout t = new Manos.Timeout( TimeSpan.FromSeconds( 1 ), RepeatBehavior.Single, null,
                                                 ( a, o ) =>
             {
+                Console.WriteLine( "Starting program" );
+
                 try
                 {
                     retCode = program.Main( progArgs );

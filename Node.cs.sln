@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timer", "examples\timer\tim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webserver", "examples\webserver\webserver.csproj", "{28604C18-82AD-40D1-AEBA-87B670237596}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTests", "ConsoleTests\ConsoleTests.csproj", "{1053C0D4-160E-498F-8E5A-4012780D9F37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{00B8A60F-71A8-41F9-8042-CBAFB832CC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00B8A60F-71A8-41F9-8042-CBAFB832CC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00B8A60F-71A8-41F9-8042-CBAFB832CC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1053C0D4-160E-498F-8E5A-4012780D9F37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1053C0D4-160E-498F-8E5A-4012780D9F37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1053C0D4-160E-498F-8E5A-4012780D9F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1053C0D4-160E-498F-8E5A-4012780D9F37}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,7 +45,7 @@ Global
 		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = examples\webserver\webserver.csproj
+		StartupItem = ConsoleTests\ConsoleTests.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None

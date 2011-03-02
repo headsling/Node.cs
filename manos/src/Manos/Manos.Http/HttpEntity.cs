@@ -38,7 +38,6 @@ using System.Collections.Specialized;
 using Libev;
 using Manos.IO;
 using Manos.Collections;
-using System.Diagnostics;
 
 namespace Manos.Http {
 
@@ -64,6 +63,7 @@ namespace Manos.Http {
 		private Dictionary<string,UploadedFile> uploaded_files;
 
 		private IHttpBodyHandler body_handler;
+		private bool finished_reading;
 
 		private AsyncWatcher end_watcher;
 
@@ -201,6 +201,9 @@ namespace Manos.Http {
 			if (o == null && properties == null)
 				return;
 
+			if (properties == null)
+				properties = new Dictionary<string,object> ();
+
 			if (o == null) {
 				properties.Remove (name);
 				if (properties.Count == 0)
@@ -263,7 +266,10 @@ namespace Manos.Http {
 
 		private int OnMessageComplete (HttpParser parser)
 		{
-			OnFinishedReading (parser);
+			// Upgrade connections will raise this event at the end of OnBytesRead
+			if (!parser.Upgrade) 
+				OnFinishedReading (parser);
+			finished_reading = true;
 			return 0;
 		}
 
@@ -373,6 +379,7 @@ namespace Manos.Http {
 			data = null;
 			post_data = null;
 			uploaded_files = null;
+			finished_reading = false;
 
 			if (parser_settings == null)
 				CreateParserSettingsInternal ();
@@ -395,6 +402,25 @@ namespace Manos.Http {
 			} catch (Exception e) {
 				Console.WriteLine ("Exception while parsing");
 				Console.WriteLine (e);
+			}
+
+			if (finished_reading && parser.Upgrade) {
+
+				//
+				// Well, this is a bit of a hack.  Ideally, maybe there should be a putback list
+				// on the socket so we can put these bytes back into the stream and the upgrade
+				// protocol handler can read them out as if they were just reading normally.
+				//
+
+				if (bytes.Position < bytes.Length) {
+					byte [] upgrade_head = new byte [bytes.Length - bytes.Position];
+					Array.Copy (bytes.Bytes, bytes.Position, upgrade_head, 0, upgrade_head.Length);
+
+					SetProperty ("UPGRADE_HEAD", upgrade_head);
+				}
+
+				// This is delayed until here with upgrade connnections.
+				OnFinishedReading (parser);
 			}
 		}
 
@@ -447,7 +473,7 @@ namespace Manos.Http {
 		public void End (string str)
 		{
 			Write (str);
-            End ();
+			End ();
 		}
 
 		public void End (byte [] data)
@@ -474,8 +500,7 @@ namespace Manos.Http {
 		}
 
 		internal virtual void HandleEnd (Loop loop, AsyncWatcher watcher, EventTypes revents)
-        {
-            Console.WriteLine( "handlee" );
+		{
 			if (OnEnd != null)
 				OnEnd ();
 		}
