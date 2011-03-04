@@ -35,6 +35,10 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="INodeProgram.cs" />
+    <Compile Include="Events\Complete.cs" />
+    <Compile Include="Exceptions\Preconditions.cs" />
+    <Compile Include="Timers.cs" />
+    <Compile Include="Exceptions\NodeApplicationException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -42,5 +46,9 @@
       <Project>{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}</Project>
       <Name>Manos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 </Project>

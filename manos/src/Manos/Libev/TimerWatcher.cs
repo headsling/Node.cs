@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Libev {
 
-	public class TimerWatcher : Watcher {
+	    public class TimerWatcher : Watcher {
 
 		private TimerWatcherCallback callback;
 		private UnmanagedTimerWatcher unmanaged_watcher;
