@@ -22,7 +22,7 @@ namespace multithreaded
 				});
 			});
 					
-			
+			t.IsBackground = true;
 			t.Name = "BH Thread";
 			
 			t.Start();

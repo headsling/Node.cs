@@ -67,7 +67,6 @@ namespace node.common
 
         public int ScheduleTimer( TimeSpan after, Action<int> onTimer )
         {
-
             if( freeList.Count == 0 ) growWatchers( watchers.Length * 2 );
 
             int ret = freeList.Dequeue();
@@ -79,6 +78,19 @@ namespace node.common
                 freeList.Enqueue( ret );
                 onTimer( ret );
             } );
+            watchers[ret] = tw;
+            tw.Start();
+            return ret;
+        }
+
+        public int ScheduleRepeatingTimer( TimeSpan interval, Action<int> onTimer )
+        {
+            if( freeList.Count == 0 ) growWatchers( watchers.Length * 2 );
+
+            int ret = freeList.Dequeue();
+
+            TimerWatcher tw = new TimerWatcher( interval, interval, loop.EventLoop, ( l, w, et ) => onTimer( ret ));
+
             watchers[ret] = tw;
             tw.Start();
             return ret;

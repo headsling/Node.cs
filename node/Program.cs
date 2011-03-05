@@ -37,6 +37,13 @@ namespace node
 	{
 		public static int Main( string[] args )
 		{
+            GlobalErrorHandler.Instance.SetGlobalErrorHandler( ( o, e ) =>
+            {
+                Console.WriteLine( e.ExceptionObject );
+                IOLoop.Instance.Stop();
+                Environment.Exit( -1 );
+            });
+
 			if( args.Length == 0 )
             {
                 Console.Error.WriteLine( "node yourdll.dll [args[]]" );
@@ -44,6 +51,7 @@ namespace node
             }
 
             string dll = args[0];
+            if( ! dll.EndsWith( ".dll" )) dll += ".dll";
 
             if( ! File.Exists( dll ))
             {

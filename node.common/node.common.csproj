@@ -40,6 +40,7 @@
     <Compile Include="Timers.cs" />
     <Compile Include="Exceptions\NodeApplicationException.cs" />
     <Compile Include="Threading\Boundary.cs" />
+    <Compile Include="Exceptions\GlobalErrorHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
