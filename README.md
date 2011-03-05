@@ -81,7 +81,7 @@ Node.cs defines a class Boundary that aims to make interacting with your main
 node app from other threads simple.
 
 	Thread.CurrentThread.Name = "LoopThread";
-	Boundary boundary = new Boundary( );
+	var boundary = Boundary.Instance;
 	Thread t = new Thread( () => 
 	{
 		Console.WriteLine( "{0} thread running", Thread.CurrentThread.Name );
