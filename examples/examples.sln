@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timer", "timer\timer.csproj", "{BE608A51-BFBE-4800-80AA-77B4A2271683}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webserver", "webserver\webserver.csproj", "{28604C18-82AD-40D1-AEBA-87B670237596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multithreaded", "multithreaded\multithreaded.csproj", "{D3134D93-3433-4926-8B72-A951AC10F967}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28604C18-82AD-40D1-AEBA-87B670237596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28604C18-82AD-40D1-AEBA-87B670237596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28604C18-82AD-40D1-AEBA-87B670237596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28604C18-82AD-40D1-AEBA-87B670237596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE608A51-BFBE-4800-80AA-77B4A2271683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3134D93-3433-4926-8B72-A951AC10F967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3134D93-3433-4926-8B72-A951AC10F967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3134D93-3433-4926-8B72-A951AC10F967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3134D93-3433-4926-8B72-A951AC10F967}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = timer\timer.csproj
+	EndGlobalSection
+EndGlobal
