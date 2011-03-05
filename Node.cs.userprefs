@@ -1,20 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="node/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="node.common/Threading/Boundary.cs">
     <Files>
-      <File FileName="manos/src/Manos/Manos.Http/HttpEntity.cs" Line="573" Column="1" />
-      <File FileName="manos/src/Manos/Manos.Http/HttpResponse.cs" Line="47" Column="8" />
-      <File FileName="ConsoleTests/Main.cs" Line="27" Column="81" />
-      <File FileName="manos/src/Manos/Manos.Http/HttpTransaction.cs" Line="60" Column="42" />
-      <File FileName="manos/src/Manos/Manos.Http/IHttpResponse.cs" Line="93" Column="51" />
-      <File FileName="manos/src/Manos/Manos/Pipeline.cs" Line="88" Column="18" />
-      <File FileName="manos/src/Manos/Manos.Http/HttpServer.cs" Line="65" Column="1" />
-      <File FileName="examples/webserver/Webserver.cs" Line="17" Column="16" />
-      <File FileName="node.common/Events/Complete.cs" Line="6" Column="50" />
-      <File FileName="manos/src/Manos/Manos.IO/IOLoop.cs" Line="24" Column="1" />
-      <File FileName="node/Program.cs" Line="1" Column="1" />
-      <File FileName="node.common/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="node.common/INodeProgram.cs" Line="1" Column="1" />
+      <File FileName="ConsoleTests/Main.cs" Line="32" Column="4" />
+      <File FileName="node.common/Timers.cs" Line="62" Column="14" />
+      <File FileName="node.common/Events/Complete.cs" Line="52" Column="1" />
+      <File FileName="manos/src/Manos/Libev/AsyncWatcher.cs" Line="96" Column="44" />
+      <File FileName="node.common/Threading/Boundary.cs" Line="95" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,14 +14,17 @@
           <Node name="ConsoleTests" expanded="True" />
           <Node name="Manos" expanded="True">
             <Node name="Libev" expanded="True" />
-            <Node name="Manos" expanded="True" />
-            <Node name="Manos.Http" expanded="True" />
             <Node name="Manos.IO" expanded="True" />
           </Node>
-          <Node name="node" expanded="True">
-            <Node name="Program.cs" selected="True" />
+          <Node name="node" expanded="True" />
+          <Node name="node.common" expanded="True">
+            <Node name="Events" expanded="True" />
+            <Node name="Exceptions" expanded="True" />
+            <Node name="Threading" expanded="True">
+              <Node name="Boundary.cs" selected="True" />
+            </Node>
           </Node>
-          <Node name="node.common" expanded="True" />
+          <Node name="node.test" expanded="True" />
           <Node name="timer" expanded="True" />
           <Node name="webserver" expanded="True" />
         </State>
@@ -38,10 +33,7 @@
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>t.ShouldContinueToRepeat()</Value>
-          <Value>repeat.ShouldContinueToRepeat ()</Value>
-        </State>
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -49,6 +41,8 @@
     <BreakpointStore>
       <Breakpoint file="/home/robin/dev/Node.cs/manos/src/Manos/Libev/AsyncWatcher.cs" line="92" />
       <Breakpoint file="/home/robin/dev/Node.cs/manos/src/Manos/Manos.Http/HttpStream.cs" line="225" />
+      <Breakpoint file="/home/robin/dev/Node.cs/node.common/Events/Complete.cs" line="90" />
+      <Breakpoint file="/home/robin/dev/Node.cs/ConsoleTests/Main.cs" line="85" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
