@@ -36,12 +36,12 @@ specified time in the future
 
 	var timers = Timers.Instance;
 	int handle = timers.ScheduleTimer( TimeSpan.FromSeconds( 5 ),
-		     Console.WriteLine( "hello in the future" );
+   			     Console.WriteLine( "hello in the future" );
                       
 Scheduling a timer returns a handle to that timer that can be used to cancel it
 before it fires
 
-  timers.CancelTimer( handle );
+	timers.CancelTimer( handle );
 
 ### Task Completion ###
 
@@ -52,24 +52,24 @@ Another common issue is the ability to know when a loop of async calls have comp
 Node.cs defines a class Complete that allows you to indicate when an async
 method is executing and when that method has completed.
 
-   Complete c = new Complete();
-   Timers t = Timers.Instance;
+	Complete c = new Complete();
+	Timers t = Timers.Instance;
   
-   var ts = TimeSpan.FromSeconds( 5 );
+	var ts = TimeSpan.FromSeconds( 5 );
 
-   int ii = 0;
-   c.AsyncWork( () => t.ScheduleTimer( ts, 
-                h => {ii++; c.AsyncWorkComplete();} ));
-   c.AsyncWork( () => t.ScheduleTimer( ts, 
-                h => {ii++;c.AsyncWorkComplete();} ));
+	int ii = 0;
+	c.AsyncWork( () => t.ScheduleTimer( ts, 
+		h => {ii++; c.AsyncWorkComplete();} ));
+	c.AsyncWork( () => t.ScheduleTimer( ts, 
+		h => {ii++;c.AsyncWorkComplete();} ));
 
-   c.OnComplete( () => Console.WriteLine( "Completed " + ii));
+	c.OnComplete( () => Console.WriteLine( "Completed " + ii));
 
 A timeout can also be specified to call you back if the async actions have not 
 completed in the specified time :
 
-   c.OnComplete( (rec ) => Console.WriteLine( "Completed " + ii + res ),
-                 TimeSpan.FromSeconds( 2 ));
+	c.OnComplete( (rec ) => Console.WriteLine( "Completed " + ii + res ),
+			TimeSpan.FromSeconds( 2 ));
 
 ### Threading ###
 
@@ -80,22 +80,22 @@ not yet provided by the framework.
 Node.cs defines a class Boundary that aims to make interacting with your main
 node app from other threads simple.
 
-    Thread.CurrentThread.Name = "LoopThread";
-    Boundary boundary = new Boundary( );
-    Thread t = new Thread( () => 
-    {
-        Console.WriteLine( "{0} thread running", Thread.CurrentThread.Name );
-        boundary.ExecuteOnTargetLoop( () => 
-        {
-            Console.WriteLine( "Boundary call executed on  {0}", 
-                                Thread.CurrentThread.Name );
-        });
-    });
-    t.Name = "BH Thread";
-    t.Start();
+	Thread.CurrentThread.Name = "LoopThread";
+	Boundary boundary = new Boundary( );
+	Thread t = new Thread( () => 
+	{
+		Console.WriteLine( "{0} thread running", Thread.CurrentThread.Name );
+		boundary.ExecuteOnTargetLoop( () => 
+		{
+			Console.WriteLine( "Boundary call executed on  {0}", 
+					Thread.CurrentThread.Name );
+		});
+	});
+	t.Name = "BH Thread";
+	t.Start();
 
-    % node example.multithreaded.dll
-    Starting program
-    BH Thread thread running
-    Boundary call executed on  LoopThread
+	% node example.multithreaded.dll
+	Starting program
+	BH Thread thread running
+	Boundary call executed on  LoopThread
 
