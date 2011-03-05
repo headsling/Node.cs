@@ -10,7 +10,7 @@ namespace multithreaded
 		{
 			Thread.CurrentThread.Name = "LoopThread";
 
-			Boundary boundary = new Boundary( );
+			var boundary = Boundary.Instance;
 			
 			Thread t = new Thread( () => 
 	        {

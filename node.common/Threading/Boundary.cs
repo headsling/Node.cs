@@ -31,6 +31,8 @@ namespace node.common
 {
     public class Boundary
     {
+        public static readonly Boundary Instance = new Boundary();
+        
         private readonly AsyncWatcher asyncWatcher;
 
         private readonly Queue<Action> workQueue;
@@ -47,7 +49,7 @@ namespace node.common
         {
             asyncWatcher = new AsyncWatcher( loop.EventLoop, ( l, w, et ) => processWork() );
             asyncWatcher.Start();
-            
+
             workQueue = new Queue<Action>();
             this.maxWorkPerLoop = maxWorkPerLoop;
         }
