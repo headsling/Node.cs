@@ -41,6 +41,7 @@
     <Compile Include="Exceptions\NodeApplicationException.cs" />
     <Compile Include="Threading\Boundary.cs" />
     <Compile Include="Exceptions\GlobalErrorHandler.cs" />
+    <Compile Include="UDPReceiver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -7,5 +7,6 @@ cp manos/build/System.Core.dll bin
 cp manos/build/Mono.Security.dll bin
 cp manos/build/System.Xml.dll bin
 cp manos/build/mscorlib.dll.mdb bin
-cp manos/build/libmanos.so bin
+cp manos/src/libmanos/.libs/libmanos.so bin
+cp manos/build/Manos.dll bin
 cp manos/build/System.dll bin

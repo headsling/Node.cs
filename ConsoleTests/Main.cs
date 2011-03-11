@@ -7,6 +7,7 @@ using System.Threading;
 using node.common;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ConsoleTests
 {
@@ -28,6 +29,18 @@ namespace ConsoleTests
         }
 
         public static void Main( string[] args )
+        {
+
+            IOLoop loop = IOLoop.Instance;
+
+            UDPReceiver rec = new UDPReceiver( loop );
+            rec.Listen( "10.0.2.15", 6656 );
+
+            rec.OnRead( ( u, b, c ) => Console.WriteLine( Encoding.ASCII.GetString( b, 0, c )));
+
+            loop.Start();
+        }
+        public static void bgThread( string[] args )
         {
 
             IOLoop loop = IOLoop.Instance;

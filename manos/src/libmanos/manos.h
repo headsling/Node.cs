@@ -35,6 +35,7 @@ void manos_shutdown (manos_data_t *data);
 
 int manos_socket_connect (char *host, int port, int *err);
 int manos_socket_listen (char *host, int port, int backlog, int *err);
+int manos_dgram_socket_listen (char *host, int port, int *err);
 int manos_socket_accept (int fd, manos_socket_info_t *info, int *err);
 int manos_socket_accept_many (int fd, manos_socket_info_t *infos, int len, int *err);
 int manos_socket_receive (int fd, char* data, int len, int *err);

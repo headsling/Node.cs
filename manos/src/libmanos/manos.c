@@ -137,6 +137,23 @@ setup_socket (int fd)
 	return (fcntl (fd, F_SETFL, O_NONBLOCK) != -1);
 }
 
+int create_dgram_socket (int *err)
+{
+	int fd = socket (PF_INET, SOCK_DGRAM, 0);
+	if (fd < 0) {
+		*err = errno;
+		return -1;
+	}
+
+	if (!setup_socket (fd)) {
+		*err = errno;
+		close (fd);
+		return -1;
+	}
+
+	return fd;
+}
+
 int create_socket (int *err)
 {
 	int fd = socket (PF_INET, SOCK_STREAM, 0);
@@ -176,6 +193,30 @@ manos_socket_connect (char *host, int port, int *err)
 
 	return fd;
 }	
+
+int
+manos_dgram_socket_listen (char *host, int port, int *err)
+{
+	struct sockaddr* addr;
+	ssize_t addrlen;
+	int fd, r;
+
+	
+	fd = create_dgram_socket (err);
+	if (fd < 0)
+		return -1;
+
+	PARSE_ADDR (host, port, addr, addrlen);
+
+	r = bind (fd, addr, addrlen);
+	if (r < 0) {
+		*err = errno;
+		return -1;
+	}
+
+	return fd;
+}
+
 
 int
 manos_socket_listen (char *host, int port, int backlog, int *err)
