@@ -58,18 +58,17 @@ method is executing and when that method has completed.
 	var ts = TimeSpan.FromSeconds( 5 );
 
 	int ii = 0;
-	c.AsyncWork( () => t.ScheduleTimer( ts, 
-		h => {ii++; c.AsyncWorkComplete();} ));
-	c.AsyncWork( () => t.ScheduleTimer( ts, 
-		h => {ii++;c.AsyncWorkComplete();} ));
+
+	c.AsyncWork( () => t.ScheduleTimer( ts, h => {ii++; c.AsyncWorkComplete();} ));
+	c.AsyncWork( () => t.ScheduleTimer( ts, h => {ii++;c.AsyncWorkComplete();} ));
 
 	c.OnComplete( () => Console.WriteLine( "Completed " + ii));
 
 A timeout can also be specified to call you back if the async actions have not 
 completed in the specified time :
 
-	c.OnComplete( (rec ) => Console.WriteLine( "Completed " + ii + res ),
-			TimeSpan.FromSeconds( 2 ));
+	c.OnComplete( (rec ) => Console.WriteLine( "Completed " + ii + res ),TimeSpan.FromSeconds( 2 ));
+			
 
 ### Threading ###
 
