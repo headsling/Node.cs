@@ -26,10 +26,11 @@ using System;
 using Libev;
 using Manos.IO;
 using System.Runtime.InteropServices;
+using System.Net;
 
 namespace node.common
 {
-    public delegate void ReadCallback( UDPReceiver receiver, byte [] data, int count );
+    public delegate void ReadCallback( UDPReceiver receiver, byte [] data, int count, IPEndPoint remoteEndPoint );
 
     public class UDPReceiver
     {
@@ -72,8 +73,9 @@ namespace node.common
         {
             int size;
             int error;
+            SocketInfo socketInfo;
 
-            size = manos_socket_receive( fd, readBuffer, maxMessageSize, out error );
+            size = manos_socket_receive_from( fd, readBuffer, maxMessageSize, 0, out socketInfo, out error );
             if( size < 0 && error != 0 )
             {
                 Close();
@@ -86,7 +88,8 @@ namespace node.common
                 return;
             }
 
-            if( readCallback != null ) readCallback( this, readBuffer, size );
+            IPEndPoint remoteEndPoint = new IPEndPoint( new IPAddress( socketInfo.addr1 ), socketInfo.port );
+            if( readCallback != null ) readCallback( this, readBuffer, size, remoteEndPoint );
         }
 
         public void Close()
@@ -114,7 +117,7 @@ namespace node.common
         private static extern int manos_socket_close (int fd, out int err);
 
         [DllImport ("libmanos", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int manos_socket_receive (int fd, byte [] buffer, int max, out int err);
+        private static extern int manos_socket_receive_from (int fd, byte [] buffer, int max, int flags, out SocketInfo info, out int err);
     }
 }
 

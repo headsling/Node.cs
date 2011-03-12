@@ -310,6 +310,43 @@ manos_socket_accept_many (int fd, manos_socket_info_t *infos, int len, int *err)
 	return i;
 }
 
+int
+manos_socket_receive_from (int fd, char* buffer, int len, int flags, manos_socket_info_t *info, int *err )
+{
+    ssize_t rc;
+       
+    struct sockaddr_storage addr;
+    socklen_t addrlen = sizeof (struct sockaddr_storage);
+
+    rc = recvfrom( fd, buffer, len, flags, (struct sockaddr*)&addr, &addrlen );
+    if (rc < 0 ) {
+        if (errno == EAGAIN || errno == EINTR) {
+        *err = 0;
+        return -1;
+        }
+        *err = errno;
+        return -1;
+    }
+
+    struct sockaddr_in *in4;
+    struct sockaddr_in6 *in6;
+
+    switch (addr.ss_family) {
+    case AF_INET:
+        in4 = (struct sockaddr_in *) &addr;
+        info->port = ntohs (in4->sin_port);
+        info->addr1 = in4->sin_addr.s_addr;
+        info->addr2 = 0;
+    break;
+    case AF_INET6:
+        in6 = (struct sockaddr_in6 *) &addr;
+        info->port = ntohs (in6->sin6_port);
+    break;
+    }
+
+    return rc;
+}
+
 
 int
 manos_socket_receive (int fd, char* buffer, int len, int *err)

@@ -66,6 +66,7 @@ namespace Manos.IO {
 		{
 		}
 
+
 		public SocketStream (SocketInfo info, IOLoop ioloop) : base (ioloop)
 		{
 			fd = info.fd;

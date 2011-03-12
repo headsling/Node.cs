@@ -1,5 +1,6 @@
 using System;
-using Manos.Http;
+using 
+Manos.Http;
 using Manos.IO;
 using node.common;
 using System.Diagnostics;
@@ -11,8 +12,10 @@ namespace webserver
         {
             new HttpServer( ( IHttpTransaction t ) =>
             {
-                Console.WriteLine( "got connection {0}", t.Request.Path );
-
+                
+				string addr = t.Request.Socket.Address;
+                Console.WriteLine( "got connection from {0}  asking for  {1}", addr, t.Request.Path );
+				;
                 t.Response.Write( "<H1>Hello World!</H1>" );
                 t.Response.End();
 
