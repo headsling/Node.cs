@@ -8,6 +8,9 @@ using node.common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+using System.Drawing;
+using System.Net;
 
 namespace ConsoleTests
 {
@@ -29,6 +32,71 @@ namespace ConsoleTests
         }
 
         public static void Main( string[] args )
+        {
+            IOLoop loop = IOLoop.Instance;
+
+
+            // string s = "http://98.139.197.254/5251/5543646565_8992081d9f_b_d.jpg";
+            string s = "http://msnbcmedia2.msn.com/j/MSNBC/Components/Photo/_new/g-110320-cvr-libya-12p.grid-8x2.jpg";
+            HttpRequest req = new HttpRequest( s );
+
+            MemoryStream ms = new MemoryStream();
+            req.OnRawBodyData = ( resp, buffer, offset, len ) =>
+            {
+                if( buffer == null )
+                {
+                    if( ((IHttpResponse)resp).StatusCode != 200 )
+                    {
+
+                        string ss = Encoding.ASCII.GetString( ms.ToArray() );
+
+                        Console.WriteLine( "failed to get any data " + ss );
+                        return;
+
+                    }
+
+                    // we're done
+                    ms.Position = 0;
+
+                    ExifExtractor ee = new ExifExtractor( ms );
+
+                    foreach( var kvp in ee.Properties )
+                    {
+                        Console.WriteLine( "{0}:{1}", kvp.Key, kvp.Value );
+                    }
+
+                }
+                else
+                {
+                    ms.Write( buffer.Bytes, offset, len );
+                }
+
+            };
+
+            Boundary b = Boundary.Instance;
+
+            req.AddressResolver = ( addr, onComplete ) =>
+            {
+                ThreadPool.QueueUserWorkItem( state => {
+                    try
+                    {
+                        var addresses = Dns.GetHostAddresses( addr );
+
+                        b.ExecuteOnTargetLoop( () => onComplete( addresses[0] ));
+                    }
+                    catch( Exception )
+                    {
+                        onComplete( null );
+                    }
+                } );
+            };
+
+            req.Method = HttpMethod.HTTP_GET;
+            req.Execute();
+
+            loop.Start();
+        }
+        public static void MainXXR2( string[] args )
         {
 
             IOLoop loop = IOLoop.Instance;

@@ -44,6 +44,8 @@ namespace Manos.Http {
 		private StreamWriter writer;
 		private Dictionary<string, HttpCookie> cookies;
 
+        public BodyDataHandler OnRawBodyData;
+
 		public HttpResponse (IHttpRequest request, SocketStream stream)
 		{
 			Request = request;
@@ -199,6 +201,12 @@ namespace Manos.Http {
 				return 1;
 			return 0;
 		}
+
+        protected override IHttpBodyHandler GetDefaultHandler()
+        {
+            if( OnRawBodyData != null ) return new HttpPassthroughBodyHandler( OnRawBodyData );
+            else return new HttpBufferedBodyHandler ();
+        }
 
 		private void WriteStatusLine (StringBuilder builder)
 		{

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>/home/robin/dev/Node.cs/bin/Manos</name>
+        <name>/home/robin/dev/node.cs/bin/Manos</name>
     </assembly>
     <members>
         <member name="T:Manos.DeleteAttribute">

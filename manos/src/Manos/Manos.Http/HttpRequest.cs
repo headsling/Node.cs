@@ -36,8 +36,12 @@ using System.Collections.Specialized;
 using Libev;
 using Manos.IO;
 using Manos.Collections;
+using System.Net;
 
-namespace Manos.Http {
+namespace Manos.Http
+{
+    public delegate void ResolveAddressHandler( string address, Action<IPAddress> onResolved );
+
 
 	public class HttpRequest : HttpEntity, IHttpRequest {
 		
@@ -47,7 +51,10 @@ namespace Manos.Http {
 		private	DataDictionary query_data;
 		private DataDictionary cookies;
 
-		
+        public BodyDataHandler OnRawBodyData;
+
+        public ResolveAddressHandler AddressResolver = defaultResolver;
+
 		public HttpRequest (string address)
 		{
 			Uri uri = null;
@@ -76,6 +83,12 @@ namespace Manos.Http {
 			RemoteAddress = stream.Address;
 			RemotePort = stream.Port;
 		}
+
+        // default existing functionality (i.e. no dns support )
+        private static void defaultResolver( string address, Action<IPAddress> onResolved )
+        {
+            onResolved( IPAddress.Parse( address ));
+        }
 
 		public IHttpTransaction Transaction {
 			get;
@@ -189,32 +202,36 @@ namespace Manos.Http {
 
 		public void Execute ()
 		{
-			Socket = new SocketStream (AppHost.IOLoop);
-			Socket.Connect (RemoteAddress, RemotePort);
+            AddressResolver( RemoteAddress, ipaddress =>
+            {
+    			Socket = new SocketStream (AppHost.IOLoop);
+    			Socket.Connect( ipaddress.ToString(), RemotePort);
+    
+    			Socket.Connected += delegate {
+    				Stream = new HttpStream (this, Socket);
+    				Stream.Chunked = false;
+    				Stream.AddHeaders = false;
 
-			Socket.Connected += delegate {
-				Stream = new HttpStream (this, Socket);
-				Stream.Chunked = false;
-				Stream.AddHeaders = false;
+    				byte [] body = GetBody ();
 
-				byte [] body = GetBody ();
-
-				if (body != null) {
-					Headers.ContentLength = body.Length;
-					Stream.Write (body, 0, body.Length);
-				}
-
-				Stream.End (() => {
-					HttpResponse response = new HttpResponse (this, Socket);
-
-					response.OnCompleted += () => {
-						if (OnResponse != null)
-							OnResponse (response);
-					};
-					
-					response.Read ();
-				});
-			};
+    				if (body != null) {
+    					Headers.ContentLength = body.Length;
+    					Stream.Write (body, 0, body.Length);
+    				}
+    
+    				Stream.End (() => {
+    					HttpResponse response = new HttpResponse (this, Socket);
+                        response.OnRawBodyData = OnRawBodyData;
+                        
+    					response.OnCompleted += () => {
+    						if (OnResponse != null)
+    							OnResponse (response);
+    					};
+    					
+    					response.Read ();
+    				});
+    			};
+            } );
 		}
 
 		public override void WriteMetadata (StringBuilder builder)
@@ -227,7 +244,11 @@ namespace Manos.Http {
 			builder.Append (".");
 			builder.Append (MinorVersion.ToString (CultureInfo.InvariantCulture));
 			builder.Append ("\r\n");
-			Headers.Write (builder, null, Encoding.ASCII);
+            builder.Append ("Host: ");
+            builder.Append (RemoteAddress);
+            builder.Append ("\r\n");
+
+            Headers.Write (builder, null, Encoding.ASCII);
 		}
 
 		public event Action<IHttpResponse> OnResponse;

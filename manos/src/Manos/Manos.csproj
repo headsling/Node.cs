@@ -158,6 +158,7 @@
     <Compile Include="Manos.Http.Testing\MockHttpResponse.cs" />
     <Compile Include="Manos\ManosConfig.cs" />
     <Compile Include="Manos.Http\Junk.cs" />
+    <Compile Include="Manos.Http\HttpPassthroughBodyHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

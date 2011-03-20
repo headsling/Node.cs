@@ -354,8 +354,13 @@ namespace Manos.Http {
 				return;
 			}
 
-			body_handler =  new HttpBufferedBodyHandler ();
+			body_handler =  GetDefaultHandler();
 		}
+
+        protected virtual IHttpBodyHandler GetDefaultHandler()
+        {
+            return new HttpBufferedBodyHandler ();
+        }
 
 		private IUploadedFileCreator GetFileCreator ()
 		{

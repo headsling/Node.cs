@@ -18,8 +18,8 @@ namespace webserver
 				;
                 t.Response.Write( "<H1>Hello World!</H1>" );
                 t.Response.End();
-
-            }, IOLoop.Instance, true ).Listen( "10.0.2.15", 8080 );
+                 
+            }, IOLoop.Instance, true ).Listen( "127.0.0.1", 8080 );
 
             Console.WriteLine( "listening on 8080" );
 
