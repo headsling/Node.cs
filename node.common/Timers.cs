@@ -37,7 +37,7 @@ namespace node.common
         private TimerWatcher[] watchers;
         private readonly Queue<int> freeList;
 
-        public Timers( IOLoop loop, int initialSize = 2 )
+        public Timers( Manos.IO.IOLoop loop, int initialSize = 2 )
         {
             this.loop = loop;
             freeList = new Queue<int>( initialSize );
@@ -71,7 +71,7 @@ namespace node.common
 
             int ret = freeList.Dequeue();
 
-            TimerWatcher tw = new TimerWatcher( after, TimeSpan.MaxValue, loop.EventLoop, ( l, w, et ) =>
+            TimerWatcher tw = new TimerWatcher( after, TimeSpan.MaxValue, (LibEvLoop)loop.EventLoop, ( l, w, et ) =>
             {
                 w.Stop();
                 watchers[ret] = null;
@@ -89,7 +89,7 @@ namespace node.common
 
             int ret = freeList.Dequeue();
 
-            TimerWatcher tw = new TimerWatcher( interval, interval, loop.EventLoop, ( l, w, et ) => onTimer( ret ));
+            TimerWatcher tw = new TimerWatcher( interval, interval, (LibEvLoop)loop.EventLoop, ( l, w, et ) => onTimer( ret ));
 
             watchers[ret] = tw;
             tw.Start();

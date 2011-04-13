@@ -31,9 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="node.common, Version=1.0.4086.39556, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Manos, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\node.common.dll</HintPath>
+      <HintPath>..\..\bin\Manos.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -42,9 +42,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\manos\src\Manos\Manos.csproj">
-      <Project>{2548B25A-2E1F-4E21-BC43-7E39B1F6F23F}</Project>
-      <Name>Manos</Name>
+    <ProjectReference Include="..\..\node.common\node.common.csproj">
+      <Project>{4868781B-94F1-4539-8A8C-6043CEDFA1E0}</Project>
+      <Name>node.common</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

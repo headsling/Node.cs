@@ -47,7 +47,7 @@ namespace node.common
 
         public Boundary( IOLoop loop, int maxWorkPerLoop )
         {
-            asyncWatcher = new AsyncWatcher( loop.EventLoop, ( l, w, et ) => processWork() );
+            asyncWatcher = new AsyncWatcher( (LibEvLoop)loop.EventLoop, ( l, w, et ) => processWork() );
             asyncWatcher.Start();
 
             workQueue = new Queue<Action>();

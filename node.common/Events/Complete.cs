@@ -78,13 +78,12 @@ namespace node.common
         /// </summary>
         public void OnComplete( Action<bool> whenComplete, TimeSpan timeOut )
         {
-
             if( WorkPending == 0 ) whenComplete( true );
             else
             {
                 timedWhenComplete = whenComplete;
 
-                watcher = new TimerWatcher( timeOut, TimeSpan.MaxValue, loop.EventLoop, ( l, w, et ) =>
+                watcher = new TimerWatcher( timeOut, TimeSpan.MaxValue, (LibEvLoop)loop.EventLoop, ( l, w, et ) =>
                 {
                     w.Stop();
                     timedWhenComplete = null;

@@ -9,7 +9,7 @@ namespace timer
         public int Main( string[] args )
         {
 
-            TimerWatcher tw = new TimerWatcher( TimeSpan.FromSeconds( 1 ), TimeSpan.FromSeconds( 1 ), IOLoop.Instance.EventLoop,
+            TimerWatcher tw = new TimerWatcher( TimeSpan.FromSeconds( 1 ), TimeSpan.FromSeconds( 1 ), (LibEvLoop)IOLoop.Instance.EventLoop,
                                                ( l, w, et ) => Console.WriteLine( "{0}: Beep", DateTime.Now ));
             tw.Start();
 

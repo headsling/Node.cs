@@ -4,6 +4,8 @@ Manos.Http;
 using Manos.IO;
 using node.common;
 using System.Diagnostics;
+using Libev;
+
 namespace webserver
 {
     public class Webserver : INodeProgram
@@ -19,7 +21,7 @@ namespace webserver
                 t.Response.Write( "<H1>Hello World!</H1>" );
                 t.Response.End();
                  
-            }, IOLoop.Instance, true ).Listen( "127.0.0.1", 8080 );
+            }, IOLoop.Instance.CreateSocketStream(), true ).Listen( "127.0.0.1", 8080 );
 
             Console.WriteLine( "listening on 8080" );
 

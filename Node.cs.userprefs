@@ -1,33 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="examples/webserver/Webserver.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="node/Program.cs">
     <Files>
-      <File FileName="node.common/UDPReceiver.cs" Line="63" Column="29" />
-      <File FileName="manos/src/Manos/Manos.IO/SocketStream.cs" Line="146" Column="3" />
-      <File FileName="manos/src/Manos/Manos.IO/IOStream.cs" Line="85" Column="3" />
-      <File FileName="ConsoleTests/Main.cs" Line="37" Column="23" />
-      <File FileName="manos/src/Manos/Manos.IO/FileSystem.cs" Line="61" Column="3" />
-      <File FileName="manos/src/Manos/Manos.Http/HttpServer.cs" Line="65" Column="1" />
-      <File FileName="manos/src/Manos/Manos.Http/HttpRequest.cs" Line="61" Column="1" />
-      <File FileName="examples/webserver/Webserver.cs" Line="16" Column="44" />
+      <File FileName="ConsoleTests/Main.cs" Line="37" Column="1" />
+      <File FileName="examples/webserver/Webserver.cs" Line="7" Column="1" />
+      <File FileName="node.common/Threading/Boundary.cs" Line="107" Column="1" />
+      <File FileName="node.common/Events/Complete.cs" Line="37" Column="20" />
+      <File FileName="node.common/Timers.cs" Line="46" Column="10" />
+      <File FileName="node/Program.cs" Line="34" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="ConsoleTests" expanded="True" />
-          <Node name="Manos" expanded="True" selected="True">
-            <Node name="Libev" expanded="True" />
-            <Node name="Manos.Http" expanded="True" />
-            <Node name="Manos.IO" expanded="True" />
-          </Node>
           <Node name="node" expanded="True" />
           <Node name="node.common" expanded="True">
             <Node name="Events" expanded="True" />
             <Node name="Exceptions" expanded="True" />
             <Node name="Threading" expanded="True" />
           </Node>
-          <Node name="node.test" expanded="True" />
-          <Node name="timer" expanded="True" />
+          <Node name="node.test" expanded="True" selected="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="timer" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
           <Node name="webserver" expanded="True" />
         </State>
       </Pad>
