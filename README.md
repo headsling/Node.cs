@@ -3,7 +3,7 @@ Node.cs
 
 ### Evented I/O for C# .net ###
 
-Node.cs takes it's inspriation from node.js, providing an extremely simple mechanism for building high performance single threaded applications. Node.cs is built on the event loop and http stack from Manos De Mono (see https://github.com/jacksonh/manos). Node.cs will also allow for interaction with threads, where interaction with the loop for asynchronous operation is not possible. 
+Node.cs takes its inspriation from node.js, providing an extremely simple mechanism for building high performance single threaded applications. Node.cs is built on the event loop and http stack from Manos De Mono (see https://github.com/jacksonh/manos). Node.cs will also allow for interaction with threads, where interaction with the loop for asynchronous operation is not possible. 
 
     public class Webserver : INodeProgram
     {
